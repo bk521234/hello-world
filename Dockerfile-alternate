@@ -1,5 +1,3 @@
-FROM ubuntu:18.04
-CMD apt-get -y update
-COPY . /app
-RUN make /app
-CMD python /app/helloworld.py
+FROM python
+COPY . .
+CMD python ./helloworld.py
