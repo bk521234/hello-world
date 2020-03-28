@@ -15,8 +15,8 @@ const (
 	EOF     = "EOF"
 
 	// Identifiers + literals
-	INDENT = "INDENT" // INDENT add, foobar, x, y ...
-	INT    = "INT"    // 123456
+	IDENT = "IDENT" // INDENT add, foobar, x, y ...
+	INT   = "INT"   // 123456
 
 	// Operators
 	ASSIGN = "="
@@ -35,3 +35,15 @@ const (
 	FUNCTION = "FUNCTION"
 	LET      = "LET"
 )
+
+var keywords = map[string]TokenType{
+	"fn":  FUNCTION,
+	"let": LET,
+}
+
+func LookupIdent(ident string) TokenType {
+	if tok, ok := keywords[ident]; ok {
+		return tok
+	}
+	return IDENT
+}
